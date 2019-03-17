@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Контакты
+{% endblock title %}
+
+
+{% block content %}
+    <div class="container bg-white p-4">
+        <h1 class="display-4 text-secondary mt-0 mb-4">Контакты</h1>
+        <div class="contacts bg-white">
+            <div class="row">
+                <div class="col-xl-4 col-lg-5">
+                    <address>
+                        <ul class="list-unstyled">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                {% for adress in contact.addresses.all %}
+                                    <span>{{ adress.address }}</span>
+                                {% endfor %}
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                {% for phone in contact.phones.all %}
+                                    <span>{{ phone.phone }}</span>
+                                {% endfor %}
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                {% for email in contact.emails.all %}
+                                    <span><a href="mailto:{{ email.email }}">{{ email.email }}</a></span>
+                                {% endfor %}
+                            </li>       
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                {% for point in contact.schedules.all %}
+                                    <span><strong>{{ point.days_point }}</strong> {{ point.time_point }}</span>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </address>
+                </div>
+                <div class="col-xl-8 col-lg-7">
+                    <div class="map">
+                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae8bdd7c407144968cc2a6f6365b90441ac22d2f2c9bf2dc3f724ac5ce3662abf&amp;width=100%25&amp;height=500&amp;lang=ru_RU&amp;scroll=false"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

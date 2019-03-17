@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load imagefit %}
+
+
+{% block title %}
+    Отзывы
+{% endblock title %}
+
+
+{% block content %}
+    <div class="container bg-white p-4">
+        <h1 class="display-4 text-secondary mt-0 mb-4">Отзывы</h1>
+        <div class="row">
+            <div class="col-lg-5">
+                <form class="needs-validation gray p-3 mb-5" method="POST" action="{% url 'reviews' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h4 class="mt-0 mb-3">Написать отзыв</h4>
+                    <div class="form-group">
+                        {{ form.email }}
+                        <div class="invalid-feedback">
+                            Заполните это поле
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.name }}
+                        <div class="invalid-feedback">
+                            Заполните это поле
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-file">
+                            {{ form.image }}
+                            <label class="custom-file-label">Ваше фото</label>
+                            <div class="invalid-feedback">
+                                Заполните это поле
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.text }}
+                        <div class="invalid-feedback">
+                            Заполните это поле
+                        </div>
+
+                        {{form.errors}}
+                    </div>
+
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane mr-3"></i>отправить отзыв </button>
+
+                <!--
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Ваш отзыв отправлен!</strong> После модерации он появится на сайте.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>При отправке произошла ошибка!</strong> Повторите попытку позже.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    -->
+                </form>
+
+            </div>
+            <div class="col-lg-7">
+                {% for review in reviews %}
+                    <div class="feedback-item bg-white mb-5 pb-5" id="f1">
+                        <div class="feedback-item-header pt-2">
+                            <h4 class="text-center m-0 text-white">{{ review.name }}</h4>
+                            <img src="{{ review.image.url|resize:'100x100,C' }}" alt="" class="rounded-circle m-auto d-block">
+                        </div>
+                        <p>{{ review.text }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

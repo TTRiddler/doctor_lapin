@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+{% load imagefit %}
+
+{% block title %}
+    Главная
+{% endblock title %}
+
+{% block content %}
+    <div class="container bg-white p-4">
+        <div class="jumbotron rounded-0">
+            <div class="d-none d-lg-block">
+                <div class="row d-flex justify-content-end">
+                    <div class="col-lg-7">
+                        <h2 class="display-3 text-secondary mt-0 mb-4">Врач-невролог, <br>мануальный терапевт</h2>
+                        <p class="lead mb-5">Меня зовут Алексей Лапин. И я считаю, что Ваше здоровье должно буквально находиться в Ваших руках.</p>
+                        <a class="btn btn-primary" href="{% url 'upcoming_seminars' %}" role="button"><i class="far fa-calendar-check fa-lg mr-2 my-2"></i>ближайшие семинары</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-lg-none bg-gray text-center pb-5 border-bottom">
+            <h2 class="display-3 text-secondary mt-4 mb-4">Врач-невролог, мануальный терапевт</h2>
+            <p class="lead mb-4">Меня зовут Алексей Лапин. И я считаю, что Ваше здоровье должно буквально находиться в Ваших руках.</p>
+            <a class="btn btn-primary" href="{% url 'upcoming_seminars' %}" role="button"><i class="far fa-calendar-check fa-lg mr-2 my-2"></i>ближайшие семинары</a>
+        </div>
+
+        <section class="pt-5">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-10">
+                        <blockquote class="blockquote text-left bg-primary p-4 p-lg-5">
+                            <i class="fas fa-quote-right fa-2x mb-3 text-white"></i>
+                            <p class="mb-3 text-white">Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил, что он у себя в постели превратился в страшное насекомое.</p>
+                            <footer class="blockquote-footer text-white font-italic">Франц Кафка</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-5 pb-4">
+            <h2 class="display-4 text-secondary mt-0 mb-4">Популярные семинары</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml1.jpg');">
+                        <div class="text-center">
+                            <h3 class="my-0">органы дыхания</h3>
+                            <hr class="my-3">
+                            <span>3 части</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml2.jpg');">
+                        <div class="text-center">
+                            <h3 class="my-0">краниосакральная терапия</h3>
+                            <hr class="my-3">
+                            <span>2 части</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml3.jpg');">
+                        <div class="text-center">
+                            <h3 class="my-0">черепно-мозговые нервы</h3>
+                            <hr class="my-3">
+                            <span>1 часть</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml4.jpg');">
+                        <div class="text-center">
+                            <h3 class="my-0">лечение остеохондроза стеохондроза</h3>
+                            <hr class="my-3">
+                            <span>1 часть</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml5.jpg');">
+                        <div class="text-center">
+                            <h3 class="my-0">фацилитированный сегмент спинного мозга</h3>
+                            <hr class="my-3">
+                            <span>1 часть</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml6.jpg');">
+                        <div class="text-center">
+                            <h3 class="my-0">пространство сердца</h3>
+                            <hr class="my-3">
+                            <span>1 часть</span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="text-center">
+                <a class="btn btn-primary" href="{% url 'all_seminars' %}" role="button">все семинары</a>
+            </div>
+        </section>
+
+    </div>
+
+    <section class="gray pt-5 pb-4">
+        <div class="container">
+            <h2 class="display-4 text-secondary mt-0 mb-4">Ближайшие семинары</h2>
+            {% for seminar in upcoming_seminars %}
+                <div class="lesson-item upcoming-lesson-item bg-white shadow">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-5">
+                            <a href="{{ seminar.seminar.get_absolute_url }}" title="" class="lesson-item-img d-block h-100" style="background-image: url('{{ seminar.seminar.image.url }}');">
+                                {% if seminar.date_start.month == seminar.date_end.month %}
+                                    <div class="upcoming-lesson-item-date px-3 py-2">
+                                        <span class="ulid-day mr-1">{{ seminar.date_start.day }}-{{ seminar.date_end.day }}</span>
+                                        <span class="ulid-month">{{ seminar.date_start|date:"E"|lower }}</span><br>
+                                        <span class="ulid-place d-block">г. {{ seminar.city }}</span>
+                                    </div>
+                                {% else %}
+                                    <div class="upcoming-lesson-item-date px-3 py-2">
+                                        c <span class="ulid-day mr-1">{{ seminar.date_start.day }}</span>
+                                        <span class="ulid-month">{{ seminar.date_start|date:"E"|lower }}</span><br>
+                                        по <span class="ulid-day mr-1">{{ seminar.date_end.day }}</span>
+                                        <span class="ulid-month">{{ seminar.date_end|date:"E"|lower }}</span>
+                                        <span class="ulid-place d-block">г. {{ seminar.city }}</span>
+                                    </div>
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-lg-8 col-md-7">
+                            <div class="lesson-item-caption p-4 pl-md-0">
+                                <span class="d-block mb-2">{{ seminar.seminar.days_number }} дня(ей) / {{ seminar.seminar.hours_number }} академических часов</span>
+                                <h3 class="mt-0 mb-3"><a class="text-secondary d-block" href="{{ seminar.seminar.get_absolute_url }}" title="">{{ seminar.seminar.title }}</a></h3>
+                                <p>{{ seminar.seminar.description|truncatechars:380|striptags }}</p>
+                                <a class="link-more" href="{{ seminar.seminar.get_absolute_url }}" title="">узнать больше »</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="display-4 text-secondary mt-0 mb-4">Статьи</h2>
+            <div class="row">
+                {% for article in latest_articles %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="article-item shadow">
+                            <a href="{{ article.get_absolute_url }}" class="article-item-img d-flex align-items-center px-4 py-5" style="background-image: url('{{ article.image.url }}');">
+                                <h3 class="m-0">{{ article.title }}</h3>
+                            </a>
+                            <div class="article-item-caption px-4 pb-4 pt-3">
+                                <p>{{ article.text|truncatechars:300|striptags }}</p>
+                                <a class="link-more" href="{{ article.get_absolute_url }}" title="">читать полностью »</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center">
+                <a class="btn btn-primary" href="{% url 'all_articles' %}" role="button">все статьи</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-primary">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-9">
+                    <div class="slider single-item">
+                        {% for review in latest_reviews %}
+                            <div class="feedback-slide bg-white px-lg-5 px-4 py-4">
+                                <img src="{{ review.image.url|resize:'100x100,C' }}" alt="" class="rounded-circle m-auto d-block">
+                                <h4 class="text-center mt-3 mb-4 text-secondary">{{ review.name }}</h4>
+                                <p class="mb-4">{{ review.text }}</p>
+                                <div class="text-center">
+                                    <a class="btn btn-primary btn-sm" href="{% url 'reviews' %}" role="button">читать полностью »</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-5 pb-4">
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-lg-7">
+                    <article>          
+                        <h1 class="display-4 text-secondary mt-0 mb-4">Лечение сколиоза</h1>
+                        <p>Доктор Лапин предлагает лучшее лечение сколиоза у взрослых по доступной цене. Вы можете избавиться от проблем со здоровьем, исправить свою осанку и за счет этого не только улучшить общее состояние здоровья, но даже и повысить уверенность в себе. Доктор Лапин использует самые современные методы лечения сколиоза, сочетая их с традиционными и хорошо себя зарекомендовавшими методиками.</p>
+                        <p>Центр лечения сколиоза у взрослых и детей доктора Лапина предлагает вам уникальную, разработанную им самим методику, которая была сформирована на основе многолетнего опыта помощи людям с такой проблемой. Современные клиники лечения сколиоза часто предлагают довольно однобокий подход к решению данной проблемы. Доктор Лапин после обучения традиционной восточной медицине в Харбине и получения знаний от лучших западных специалистов создал свою технику мануальной терапии, сочетающую в себе плюсы обоих подходов и методов лечения сколиоза.</p>
+                        <p>В нашем центре ведется не только лечение сколиоза спины, но также и решение таких проблем со здоровьем, как коксартроз и последствия перенесенных инсультов. Эффективное лечение сколиоза и других указанных выше заболеваний становится возможным благодаря тщательной диагностике и индивидуальному подходу к лечению каждого больного с учетом всех особенностей его здоровья.</p>
+                        <p>Если вас заинтересовало лечение сколиоза в Петербурге у доктора Лапина , вы можете получить дополнительную информацию о его методиках в иных разделах нашего сайта. Обратившись к нам, вы сможете побороть не только поясничный, но и шейный сколиоз, лечение которого имеет свои особенности.</p>
+                    </article>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block text-center pb-4">
+                    <img src="images/spine.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray py-5">
+        <div class="container">
+            <h2 class="display-4 text-secondary mt-0 mb-4">Контакты</h2>
+            <div class="contacts bg-white shadow">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <address class="px-3 py-4 px-lg-4 py-lg-5">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {% for adress in contact.addresses.all %}
+                                        <span>{{ adress.address }}</span>
+                                    {% endfor %}
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    {% for phone in contact.phones.all %}
+                                        <span>{{ phone.phone }}</span>
+                                    {% endfor %}
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    {% for email in contact.emails.all %}
+                                        <span><a href="mailto:{{ email.email }}">{{ email.email }}</a></span>
+                                    {% endfor %}
+                                </li>       
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    {% for point in contact.schedules.all %}
+                                        <span><strong>{{ point.days_point }}</strong> {{ point.time_point }}</span>
+                                    {% endfor %}
+                                </li>
+                            </ul>
+                        </address>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="map">
+                            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae8bdd7c407144968cc2a6f6365b90441ac22d2f2c9bf2dc3f724ac5ce3662abf&amp;width=100%25&amp;height=500&amp;lang=ru_RU&amp;scroll=false"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

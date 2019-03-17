@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Сертификаты
+{% endblock title %}
+
+
+{% block content %}
+    <div class="container bg-white p-4">
+        <h1 class="display-4 text-secondary mt-0 mb-4">Сертификаты</h1>
+        {% for document in all_documents %}
+            <div class="doc-item d-flex justify-content-start align-items-start">
+                <i class="far fa-file-alt fa-2x mr-3"></i>
+                <div class="doc-item-caption">
+                    <h3 class="m-0"><a href="{{ document.document.url }}" title="" target="_blank">{{ document.name }}</a></h3>
+                    <small class="text-muted">({{ document.get_ext }}, {{ document.document.size|filesizeformat }})</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Все семинары
+{% endblock title %}
+
+
+{% block content %}
+    <div class="container bg-white p-4">
+        <h1 class="display-4 text-secondary mt-0 mb-4">Все семинары</h1>
+        {% for seminar in all_seminars %}
+            <div class="lesson-item bg-white shadow">
+                <div class="row">
+                    <div class="col-lg-4 col-md-5">
+                        <a href="{{ seminar.get_absolute_url }}" title="" class="lesson-item-img d-block h-100" style="background-image: url('{{ seminar.image.url }}');">
+                        </a>
+                    </div>
+                    <div class="col-lg-8 col-md-7">
+                        <div class="lesson-item-caption p-4 pl-md-0">
+                            <span class="d-block mb-2">{{ seminar.days_number }} дня(ей) / {{ seminar.hours_number }} академических часов</span>
+                            <h3 class="mt-0 mb-3"><a class="text-secondary d-block" href="{{ seminar.get_absolute_url }}" title="">{{ seminar.title }}</a></h3>
+                            <p>{{ seminar.description|truncatechars:380|striptags }}</p>
+                            <a class="link-more" href="{{ seminar.get_absolute_url }}" title="">узнать больше »</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 
 class Document(models.Model):
@@ -10,6 +11,12 @@ class Document(models.Model):
         return 'documents/%s' % filename
 
     document = models.FileField(upload_to=get_document_url, max_length=100, verbose_name='Файл')
+
+    
+    def get_ext(self):
+        name, extension = os.path.splitext(self.document.name)
+        extension = extension[1:]
+        return extension
 
     class Meta:
         verbose_name = 'Документ'

@@ -7,7 +7,7 @@ class Review(models.Model):
     name = models.CharField(max_length=250, verbose_name='Имя')
     text = models.TextField(verbose_name='Текст')
     published = models.BooleanField(default=True, verbose_name='Активно')
-    created_date = models.DateField(default=date.today, verbose_name='Дата создания')
+    created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
 
     def get_picture_url(self, filename):
         ext = filename.split('.')[-1]
@@ -19,6 +19,7 @@ class Review(models.Model):
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Все отзывы'
+        ordering = ['-created_date']
 
     def __str__(self):
         return '%s - %s' % (self.id, self.email)

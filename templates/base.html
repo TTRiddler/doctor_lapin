@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        {% include 'head.html' %}
+        <title>
+            {% block title %}{% endblock title %} - Сайт доктора Лапина
+        </title>
+    </head>
+    <body>
+        {% include 'header.html' %}
+
+        {% block content %}
+        {% endblock content %}
+
+        <div class="scroll-to-top"></div>
+
+        {% include 'footer.html' %}
+
+        {% include 'scripts.html' %}
+    </body>
+</html>

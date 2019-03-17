@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky">
+    <div class="container p-0">
+        <a class="navbar-brand" href="{% url 'index' %}"><span>Доктор</span> Алексей Юрьевич Лапин</a>
+        <button class="navbar-toggler is-mouse-focused" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse mr-auto">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{% url 'upcoming_seminars' %}">
+                        Семинары
+                    </a>
+                    <div class="dropdown-menu rounded-0 border-0 shadow">
+                        <a class="dropdown-item" href="{% url 'upcoming_seminars' %}">Ближайшие семинары</a>
+                        <a class="dropdown-item" href="{% url 'all_seminars' %}">Все семинары</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_articles' %}">Статьи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_documents' %}">Сертификаты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'reviews' %}">Отзывы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacts' %}">Контакты</a>
+                </li>
+                <!--
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="content.html">
+                Dropdown
+                </a>
+                <div class="dropdown-menu rounded-0 border-0 shadow">
+                <a class="dropdown-item" href="content.html">Dropdown item</a>
+                <a class="dropdown-item" href="content.html">Dropdown item</a>
+                <a class="dropdown-item" href="content.html">Dropdown item</a>
+                <a class="dropdown-item" href="content.html">Dropdown item</a>
+                </div>
+                </li>
+                -->
+            </ul>
+        </div>
+
+        <span class="navbar-text d-none d-xl-block">
+            <i class="fas fa-phone fa-sm mr-2"></i>{{ phone }}
+        </span>
+    </div>
+
+    <div class="d-lg-none offcanvas-collapse">
+        <div class="container p-0">
+            <div id="jquery-accordion-menu" class="jquery-accordion-menu">
+                <ul>
+                    <li>
+                        <a href="#">Семинары</a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'upcoming_seminars' %}">Ближайшие семинары</a></li>
+                            <li><a href="{% url 'all_seminars' %}">Все семинары</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{% url 'all_articles' %}">Статьи</a>
+                    </li>    
+                    <li>
+                        <a href="{% url 'all_documents' %}">Сертификаты</a>
+                    </li>     
+                    <li>
+                        <a href="{% url 'reviews' %}">Отзывы</a>
+                    </li>      
+                    <li>
+                        <a href="{% url 'contacts' %}">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</nav>
