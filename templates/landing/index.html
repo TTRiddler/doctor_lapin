@@ -31,8 +31,8 @@
                     <div class="col-lg-10">
                         <blockquote class="blockquote text-left bg-primary p-4 p-lg-5">
                             <i class="fas fa-quote-right fa-2x mb-3 text-white"></i>
-                            <p class="mb-3 text-white">Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил, что он у себя в постели превратился в страшное насекомое.</p>
-                            <footer class="blockquote-footer text-white font-italic">Франц Кафка</footer>
+                            <p class="mb-3 text-white">{{ quote.text }}</p>
+                            <footer class="blockquote-footer text-white font-italic">{{ quote.author }}</footer>
                         </blockquote>
                     </div>
                 </div>
@@ -42,61 +42,17 @@
         <section class="pt-5 pb-4">
             <h2 class="display-4 text-secondary mt-0 mb-4">Популярные семинары</h2>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml1.jpg');">
-                        <div class="text-center">
-                            <h3 class="my-0">органы дыхания</h3>
-                            <hr class="my-3">
-                            <span>3 части</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml2.jpg');">
-                        <div class="text-center">
-                            <h3 class="my-0">краниосакральная терапия</h3>
-                            <hr class="my-3">
-                            <span>2 части</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml3.jpg');">
-                        <div class="text-center">
-                            <h3 class="my-0">черепно-мозговые нервы</h3>
-                            <hr class="my-3">
-                            <span>1 часть</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml4.jpg');">
-                        <div class="text-center">
-                            <h3 class="my-0">лечение остеохондроза стеохондроза</h3>
-                            <hr class="my-3">
-                            <span>1 часть</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml5.jpg');">
-                        <div class="text-center">
-                            <h3 class="my-0">фацилитированный сегмент спинного мозга</h3>
-                            <hr class="my-3">
-                            <span>1 часть</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a href="content.html" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('images/ml6.jpg');">
-                        <div class="text-center">
-                            <h3 class="my-0">пространство сердца</h3>
-                            <hr class="my-3">
-                            <span>1 часть</span>
-                        </div>
-                    </a>
-                </div>
-
+                {% for seminar in popular_seminars %}
+                    <div class="col-lg-4 col-md-6">
+                        <a href="{{ seminar.get_absolute_url }}" class="main-lesson-item px-5 py-4 d-flex align-items-center justify-content-center" style="background-image: url('{{ seminar.image.url }}');">
+                            <div class="text-center">
+                                <h3 class="my-0">{{ seminar.title }}</h3>
+                                <hr class="my-3">
+                                <span>{{ seminar.days_number }} части(ей)</span>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
 
             <div class="text-center">
@@ -196,15 +152,12 @@
             <div class="row d-flex align-items-center">
                 <div class="col-lg-7">
                     <article>          
-                        <h1 class="display-4 text-secondary mt-0 mb-4">Лечение сколиоза</h1>
-                        <p>Доктор Лапин предлагает лучшее лечение сколиоза у взрослых по доступной цене. Вы можете избавиться от проблем со здоровьем, исправить свою осанку и за счет этого не только улучшить общее состояние здоровья, но даже и повысить уверенность в себе. Доктор Лапин использует самые современные методы лечения сколиоза, сочетая их с традиционными и хорошо себя зарекомендовавшими методиками.</p>
-                        <p>Центр лечения сколиоза у взрослых и детей доктора Лапина предлагает вам уникальную, разработанную им самим методику, которая была сформирована на основе многолетнего опыта помощи людям с такой проблемой. Современные клиники лечения сколиоза часто предлагают довольно однобокий подход к решению данной проблемы. Доктор Лапин после обучения традиционной восточной медицине в Харбине и получения знаний от лучших западных специалистов создал свою технику мануальной терапии, сочетающую в себе плюсы обоих подходов и методов лечения сколиоза.</p>
-                        <p>В нашем центре ведется не только лечение сколиоза спины, но также и решение таких проблем со здоровьем, как коксартроз и последствия перенесенных инсультов. Эффективное лечение сколиоза и других указанных выше заболеваний становится возможным благодаря тщательной диагностике и индивидуальному подходу к лечению каждого больного с учетом всех особенностей его здоровья.</p>
-                        <p>Если вас заинтересовало лечение сколиоза в Петербурге у доктора Лапина , вы можете получить дополнительную информацию о его методиках в иных разделах нашего сайта. Обратившись к нам, вы сможете побороть не только поясничный, но и шейный сколиоз, лечение которого имеет свои особенности.</p>
+                        <h1 class="display-4 text-secondary mt-0 mb-4">{{ someinfo.title }}</h1>
+                        {{ someinfo.text|safe }}
                     </article>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block text-center pb-4">
-                    <img src="images/spine.png" alt="">
+                    <img src="{{ someinfo.image.url }}" alt="">
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ class Review(models.Model):
     email = models.EmailField(max_length=250, verbose_name='E-mail')
     name = models.CharField(max_length=250, verbose_name='Имя')
     text = models.TextField(verbose_name='Текст')
-    published = models.BooleanField(default=True, verbose_name='Активно')
+    published = models.BooleanField(default=False, verbose_name='Активно')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
 
     def get_picture_url(self, filename):
@@ -14,7 +14,7 @@ class Review(models.Model):
         filename = '%s.%s' % (self.email, ext)
         return 'images/reviews/%s' % filename
 
-    image = models.ImageField(upload_to=get_picture_url, verbose_name='Фото')
+    image = models.ImageField(upload_to=get_picture_url, verbose_name='Фото', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Отзыв'

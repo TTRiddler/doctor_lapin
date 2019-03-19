@@ -3,7 +3,9 @@ from seminars.models import Seminar, UpcomingSeminar
 
 
 class SeminarAdmin(admin.ModelAdmin):
-    list_display = ['title', 'days_number', 'hours_number']
+    list_display = ['title', 'days_number', 'hours_number', 'in_index']
+    list_editable = ['in_index']
+    list_filter = ['in_index']
 
 
 class UpcomingSeminarAdmin(admin.ModelAdmin):

@@ -9,6 +9,7 @@ class Seminar(models.Model):
     description = HTMLField(verbose_name='Описание')
     days_number = models.PositiveSmallIntegerField(verbose_name='Количество дней', default=1)
     hours_number = models.PositiveSmallIntegerField(verbose_name='Академических часов', default=1)
+    in_index = models.BooleanField(default=False, verbose_name='Отображать на главной', help_text='Отображаюся только 6 выбранных семинаров')
 
     def get_picture_url(self, filename):
         ext = filename.split('.')[-1]

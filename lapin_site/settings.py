@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'documents',
     'contacts',
     'seminars',
+    'static_elements',
+    'static_strings',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,9 @@ SITE_ID = 1
 
 FILEBROWSER_DIRECTORY = ''
 DIRECTORY = ''
+
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'goga23d@gmail.com'
+EMAIL_HOST_PASSWORD = 'khysaqitvdnqtneg'

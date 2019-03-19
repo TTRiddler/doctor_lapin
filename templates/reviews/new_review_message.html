@@ -1,0 +1,14 @@
+{% autoescape off %}
+    На сайте http://{{ domain }} новый отзыв.
+    
+    Информация об отзыве:
+
+    Отзыв № {{ review.id }}
+    Дата/Время: {{ review.created_date }}
+
+    E-mail: {{ review.email }}
+    Имя: {{ review.name }}
+    Текст: {{ review.text }}
+    
+    Ссылка на сайт: http://{{ domain }}
+{% endautoescape %}
