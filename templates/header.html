@@ -1,3 +1,6 @@
+{% load flatpages %}
+{% get_flatpages as flatpages %}
+
 <nav class="navbar navbar-expand-lg navbar-light sticky">
     <div class="container p-0">
         <a class="navbar-brand" href="{% url 'index' %}"><span>Доктор</span> Алексей Юрьевич Лапин</a>
@@ -28,19 +31,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contacts' %}">Контакты</a>
                 </li>
-                <!--
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="content.html">
-                Dropdown
-                </a>
-                <div class="dropdown-menu rounded-0 border-0 shadow">
-                <a class="dropdown-item" href="content.html">Dropdown item</a>
-                <a class="dropdown-item" href="content.html">Dropdown item</a>
-                <a class="dropdown-item" href="content.html">Dropdown item</a>
-                <a class="dropdown-item" href="content.html">Dropdown item</a>
-                </div>
-                </li>
-                -->
+                {% if flatpages %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#">
+                            Прочее
+                        </a>
+                        <div class="dropdown-menu rounded-0 border-0 shadow">
+                            {% for page in flatpages %}
+                                <a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% endif %}
             </ul>
         </div>
 
