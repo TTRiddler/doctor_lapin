@@ -10,7 +10,8 @@ class Seminar(models.Model):
     days_number = models.PositiveSmallIntegerField(verbose_name='Количество дней', default=1)
     hours_number = models.PositiveSmallIntegerField(verbose_name='Академических часов', default=1)
     in_index = models.BooleanField(default=False, verbose_name='Отображать на главной', help_text='Отображаюся только 6 выбранных семинаров')
-    video = models.URLField(max_length=250, verbose_name='Ссылка на видео', blank=True, null=True)
+    video = models.CharField(max_length=250, verbose_name='Ссылка на видео', blank=True, null=True)
+    my_order = models.PositiveIntegerField(default=0, blank=False, null=False, verbose_name='Сортировка')
 
     def get_picture_url(self, filename):
         ext = filename.split('.')[-1]
@@ -27,6 +28,7 @@ class Seminar(models.Model):
     class Meta:
         verbose_name = 'Семинар'
         verbose_name_plural = 'Все семинары'
+        ordering = ['my_order']
 
     def __str__(self):
         return '%s' % self.title

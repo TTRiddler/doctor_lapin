@@ -1,9 +1,10 @@
 from django.contrib import admin
+from adminsortable2.admin import SortableAdminMixin
 from seminars.models import Seminar, UpcomingSeminar
 
 
-class SeminarAdmin(admin.ModelAdmin):
-    list_display = ['title', 'days_number', 'hours_number', 'in_index']
+class SeminarAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ['title', 'days_number', 'hours_number', 'in_index', 'my_order']
     list_editable = ['in_index']
     list_filter = ['in_index']
 

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'tinymce',
     'imagefit',
+    'adminsortable2',
 
     'landing',
     'articles',

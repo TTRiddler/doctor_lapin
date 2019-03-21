@@ -3,7 +3,7 @@ from articles.models import Article
 
 
 def all_articles(request):
-    all_articles = Article.objects.all()
+    all_articles = Article.objects.filter(published=True)
 
     context = {
         'all_articles': all_articles,

@@ -9,7 +9,7 @@ class Article(models.Model):
     text = HTMLField(verbose_name='Текст')
     published = models.BooleanField(default=True, verbose_name='Активно')
     created_date = models.DateField(default=date.today, verbose_name='Дата создания')
-    video = models.URLField(max_length=250, verbose_name='Ссылка на видео', blank=True, null=True)
+    video = models.CharField(max_length=250, verbose_name='Ссылка на видео', blank=True, null=True)
 
     def get_picture_url(self, filename):
         ext = filename.split('.')[-1]
@@ -26,6 +26,7 @@ class Article(models.Model):
     class Meta:
         verbose_name = 'Статья'
         verbose_name_plural = 'Все статьи'
+        ordering = ['-created_date']
 
     def __str__(self):
         return '%s' % self.title
